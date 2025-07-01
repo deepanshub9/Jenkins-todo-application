@@ -5,7 +5,7 @@ pipeline{
         stage("Code Clone"){
             steps{
                 echo "Code Clone Stage"
-                git url: "https://github.com/LondheShubham153/node-todo-cicd.git", branch: "master"
+                git url: "https://github.com/deepanshub9/Jenkins-todo-application", branch: "main"
             }
         }
         stage("Code Build & Test"){
