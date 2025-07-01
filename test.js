@@ -1,42 +1,131 @@
-// Requiring module
-const assert = require('assert');
+const chai = require('chai');
+const request = require('supertest');
+const app = require('./server'); // Adjust if your main app file is named differently
 
-// We can group similar tests inside a describe block
-describe("Simple Calculations", () => {
-before(() => {
-	console.log( "This part executes once before all tests" );
-});
+// test.test.js
+const expect = chai.expect;
 
-after(() => {
-	console.log( "This part executes once after all tests" );
-});
+describe('Todo API Tests', () => {
+	let createdTodoId;
 	
-// We can add nested blocks for different tests
-describe( "Test1", () => {
-	beforeEach(() => {
-	console.log( "executes before every test" );
-	});
-	
-	it("Is returning 5 when adding 2 + 3", () => {
-	assert.equal(2 + 3, 5);
+	before((done) => {
+		console.log('Starting API tests');
+		done();
 	});
 
-	it("Is returning 6 when multiplying 2 * 3", () => {
-	assert.equal(2*3, 6);
-	});
-});
-
-describe("Test2", () => {
-	beforeEach(() => {
-	console.log( "executes before every test" );
-	});
-	
-	it("Is returning 4 when adding 2 + 3", () => {
-	assert.equal(2 + 3, 5);
+	after((done) => {
+		console.log('All API tests completed');
+		done();
 	});
 
-	it("Is returning 8 when multiplying 2 * 4", () => {
-	assert.equal(2*4, 8);
+	describe('GET /api/todos', () => {
+		it('should return all todos', (done) => {
+			request(app)
+				.get('/api/todos')
+				.expect(200)
+				.end((err, res) => {
+					if (err) return done(err);
+					expect(res.body).to.be.an('array');
+					done();
+				});
+		});
 	});
-});
+
+	describe('POST /api/todos', () => {
+		it('should create a new todo', (done) => {
+			const newTodo = {
+				text: 'Test todo item',
+				completed: false
+			};
+
+			request(app)
+				.post('/api/todos')
+				.send(newTodo)
+				.expect(200)
+				.end((err, res) => {
+					if (err) return done(err);
+					expect(res.body).to.be.an('object');
+					expect(res.body.text).to.equal(newTodo.text);
+					expect(res.body.completed).to.equal(newTodo.completed);
+					expect(res.body).to.have.property('_id');
+					createdTodoId = res.body._id;
+					done();
+				});
+		});
+	});
+
+	describe('GET /api/todos/:id', () => {
+		it('should return a specific todo', (done) => {
+			// Skip this test if we don't have a created todo
+			if (!createdTodoId) {
+				return done();
+			}
+
+			request(app)
+				.get(`/api/todos/${createdTodoId}`)
+				.expect(200)
+				.end((err, res) => {
+					if (err) return done(err);
+					expect(res.body).to.be.an('object');
+					expect(res.body).to.have.property('_id');
+					expect(res.body._id).to.equal(createdTodoId);
+					done();
+				});
+		});
+
+		it('should return 404 for non-existent todo', (done) => {
+			request(app)
+				.get('/api/todos/nonexistentid')
+				.expect(404)
+				.end((err) => {
+					if (err) return done(err);
+					done();
+				});
+		});
+	});
+
+	describe('PUT /api/todos/:id', () => {
+		it('should update a specific todo', (done) => {
+			// Skip this test if we don't have a created todo
+			if (!createdTodoId) {
+				return done();
+			}
+
+			const updatedTodo = {
+				text: 'Updated test todo',
+				completed: true
+			};
+
+			request(app)
+				.put(`/api/todos/${createdTodoId}`)
+				.send(updatedTodo)
+				.expect(200)
+				.end((err, res) => {
+					if (err) return done(err);
+					expect(res.body).to.be.an('object');
+					expect(res.body.text).to.equal(updatedTodo.text);
+					expect(res.body.completed).to.equal(updatedTodo.completed);
+					done();
+				});
+		});
+	});
+
+	describe('DELETE /api/todos/:id', () => {
+		it('should delete a specific todo', (done) => {
+			// Skip this test if we don't have a created todo
+			if (!createdTodoId) {
+				return done();
+			}
+
+			request(app)
+				.delete(`/api/todos/${createdTodoId}`)
+				.expect(200)
+				.end((err, res) => {
+					if (err) return done(err);
+					expect(res.body).to.be.an('object');
+					expect(res.body.message).to.include('deleted');
+					done();
+				});
+		});
+	});
 });
