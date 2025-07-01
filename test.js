@@ -1,6 +1,6 @@
 const chai = require('chai');
 const request = require('supertest');
-const app = require('./server'); // Adjust if your main app file is named differently
+const app = require('./app'); // Adjust if your main app file is named differently
 
 // test.test.js
 const expect = chai.expect;
