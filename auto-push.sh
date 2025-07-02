@@ -1,10 +1,14 @@
 #!/bin/bash
+
 for i in {1..30}
 do
-  echo "// RQ2 run $i" >> dummy.txt   # adds a fake comment to dummy.txt
-  git add .
-  git commit -m "RQ2 run $i"
-  git push
+  echo "Application run $i" >> dummy.txt
+  git add dummy.txt
+  git commit -m "Application run $i"
+  git push origin main
   echo "✅ Pushed run $i"
-  sleep 10  # wait for 10 seconds before next push
+
+  # Wait for Jenkins to finish before next push
+  echo "⏳ Waiting 90 seconds for Jenkins job to finish..."
+  sleep 90
 done
