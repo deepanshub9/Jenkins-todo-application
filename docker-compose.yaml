@@ -1,7 +1,8 @@
-version: "3.8"
 services:
   node-app:
-    build: .
+    image: deepanshub9/node-app:latest
+    build:
+      context: .
+    container_name: node-app
     ports:
       - "8000:8000"
-    container_name: node-app
