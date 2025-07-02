@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --recursive --exit",
+    "test": "nyc mocha --recursive --exit",
     "sonar": "sonar-scanner"
   },
   "author": "riaan@entersekt.com",
@@ -20,5 +20,18 @@
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2"
-  }
+  },
+
+  "nyc": {
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "all": true,
+  "exclude": [
+    "test/**",
+    "node_modules/**"
+  ]
+}
+
 }
