@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in {1..30}
+for i in {16..30}
 do
   echo "Application run $i" >> dummy.txt
   git add dummy.txt
