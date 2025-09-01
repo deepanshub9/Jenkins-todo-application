@@ -141,6 +141,17 @@ This Node.js To-Do application serves as a comprehensive demonstration of modern
 
 ---
 
+![Pipeline Overview](https://github.com/user-attachments/assets/1e5af4cc-66d1-414b-b721-4568cf219564)
+
+![Build Status](https://github.com/user-attachments/assets/a0155873-8756-45ec-b11e-afa41bad8ec8)
+
+![Security Scanning](https://github.com/user-attachments/assets/d2a549ee-cb6b-4f02-9ae7-9792fde639d1)
+
+![Code Quality](https://github.com/user-attachments/assets/7402e4ce-8d59-468b-bf3c-93f3d59fccb9)
+
+![Deployment Success](https://github.com/user-attachments/assets/a4f03043-0fbb-4f32-82ea-d5463ef5fbdf)
+
+
 ## Local Development Setup
 
 ### Prerequisites
@@ -973,21 +984,6 @@ kubectl get ingress -n production
 ### License
 
 MIT License
-
----
-
-## Pipeline Execution Logs
-
-![Pipeline Overview](https://github.com/user-attachments/assets/1e5af4cc-66d1-414b-b721-4568cf219564)
-
-![Build Status](https://github.com/user-attachments/assets/a0155873-8756-45ec-b11e-afa41bad8ec8)
-
-![Security Scanning](https://github.com/user-attachments/assets/d2a549ee-cb6b-4f02-9ae7-9792fde639d1)
-
-![Code Quality](https://github.com/user-attachments/assets/7402e4ce-8d59-468b-bf3c-93f3d59fccb9)
-
-![Deployment Success](https://github.com/user-attachments/assets/a4f03043-0fbb-4f32-82ea-d5463ef5fbdf)
-
 
 ---
 
