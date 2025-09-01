@@ -987,6 +987,6 @@ MIT License
 
 ---
 
-**Author**: Deepanshu Bhargava  
+**Author**: Deepanshu Bhardwaj  
 **Repository**: [Jenkins-todo-application](https://github.com/deepanshub9/Jenkins-todo-application)  
 **Last Updated**: August 2025
