@@ -988,7 +988,6 @@ MIT License
 
 ![Deployment Success](https://github.com/user-attachments/assets/a4f03043-0fbb-4f32-82ea-d5463ef5fbdf)
 
-![Application Dashboard](https://github.com/user-attachments/assets/8733e9ae-7604-4104-8778-54a822999672)
 
 ---
 
