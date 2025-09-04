@@ -145,7 +145,6 @@ This Node.js To-Do application serves as a comprehensive demonstration of modern
 
 ![Build Status](https://github.com/user-attachments/assets/a0155873-8756-45ec-b11e-afa41bad8ec8)
 
-![Security Scanning](https://github.com/user-attachments/assets/d2a549ee-cb6b-4f02-9ae7-9792fde639d1)
 
 ![Code Quality](https://github.com/user-attachments/assets/7402e4ce-8d59-468b-bf3c-93f3d59fccb9)
 
